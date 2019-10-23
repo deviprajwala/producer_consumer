@@ -1,19 +1,6 @@
 #include<stdio.h>
 #define BUFFER_SIZE 11
 
-int insert_to_buffer(int in,int buff[BUFFER_SIZE],int item)
-{
-  in++;
-  if(in<=BUFFER_SIZE)
-  {
-   buff[in]=item;
-  }
-  else
-  {
-   printf("buffer is full\n");
-  }
-  return in;
-}
 
 void display(int out,int buff[BUFFER_SIZE],int in)
 {
@@ -29,22 +16,6 @@ void display(int out,int buff[BUFFER_SIZE],int in)
   printf("\n");
 }
 
-int remove_from_buffer(int in,int buff[BUFFER_SIZE])
-{
-  int c;
-  if(in>0)
-  {
-   c=buff[in];
-   printf("Item removed is %d",c);
-   buff[in]=0;
-   in--;
-  }
-  else
-  {
-   printf("buffer is empty\n");
-  }
-  return in;
-}
 
 int produce(int ptr,int buff[BUFFER_SIZE],int item,int out)
 {
@@ -83,36 +54,43 @@ int consume(int in,int buff[BUFFER_SIZE],int out)
  printf("All the items are consumed by the consumer\n");
  return out;
 }
+
+
 int main()
 {
- int ch,item,buff[BUFFER_SIZE]={0},in=1,out=0;
- printf(" 1.TO PRODUCE ITEM\n 2.TO CONSUME AN ITEM\n 3.DISPLAY ITEMS IN BUFFER\n 4.PRODUCER   PROCESS USING SHARED MEMORY\n 5.CONSUMER PROCESS USING SHARED MEMORY\n 6.EXIT\n");
- for(;;)
+ int ch,item,buff[BUFFER_SIZE]={0},in=1,out=0,c=1;
+ printf(" 1.PRODUCER PROCESS USING SHARED MEMORY\n 2.CONSUMER PROCESS USING SHARED MEMORY\n 3.DISPLAY ITEMS IN BUFFER\n 4.EXIT\n");  
+ while(c==1)
 {
  printf("Enter your choice\n");
  scanf("%d",&ch);
+ printf("Entered choice is %d\n",ch);
+
  switch(ch)
  {
-   case 1:printf("Enter the item to be inserted\n");
-          scanf("%d",&item);
-          in=insert_to_buffer(in,buff,item);
-          break;
-
-   case 2:in=remove_from_buffer(in,buff);
-          break;
    
    case 3:display(out,buff,in);
-          break;
-  
-   case 4:printf("Enter the item to be produced by producer\n");
+          goto label;
+   
+
+   case 1:printf("Enter the item to be produced by producer\n");
           scanf("%d",&item);
           in=produce(in,buff,item,out);
-          break;
+          printf("Items produced by buffer is %d\n",item);
+          goto label;
 
-   case 5:out=consume(in,buff,out);
-          break;
-   
+
+   case 2:out=consume(in,buff,out);
+          goto label;
+
+
    default:exit(0);
+
+ label:
+     printf("Enter 1 to continue 0 to exit\n");
+     scanf("%d",&c);
+     printf("Entered value is %d\n",c);
+     break;
  }
 }
  return 0;

@@ -1,0 +1,28 @@
+ 1.PRODUCER PROCESS USING SHARED MEMORY
+ 2.CONSUMER PROCESS USING SHARED MEMORY
+ 3.DISPLAY ITEMS IN BUFFER
+ 4.EXIT
+Enter your choice
+Entered choice is 1
+Enter the item to be produced by producer
+Items are produced by the buffer
+Items produced by buffer is 10
+Enter 1 to continue 0 to exit
+Entered value is 1
+Enter your choice
+Entered choice is 3
+10  10  10  10  10  10  10  10  10  10  
+Enter 1 to continue 0 to exit
+Entered value is 1
+Enter your choice
+Entered choice is 2
+All the items are consumed by the consumer
+Enter 1 to continue 0 to exit
+Entered value is 1
+Enter your choice
+Entered choice is 3
+0  0  0  0  0  0  0  0  0  0  
+Enter 1 to continue 0 to exit
+Entered value is 1
+Enter your choice
+Entered choice is 4
